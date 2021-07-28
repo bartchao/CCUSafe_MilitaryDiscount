@@ -1,5 +1,5 @@
 <?php
-class RecordCourse_model extends CI_Model {
+class Recordcourse_model extends CI_Model {
 
         public function __construct()
         {
