@@ -1,9 +1,8 @@
 <div class="container px-1 gy-5">
     <div>
-    
         <button onClick="window.print()" class="btn btn-primary">列印/儲存</button>
-        <input type="hidden" name="options[]" value="<?php echo $record_item['RecordId'];?>">
         <?php echo form_open('admin/delete')?>
+        <input type="hidden" name="options[]" value="<?php echo $record_item['RecordId'];?>">
         <button type="submit" class ="btn btn-danger">刪除</button>
         <?php echo form_close()?>
         <p>頁面生成時間:<?php 
