@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- 資料表結構 `course`
 --
 
-CREATE TABLE `course` (
+CREATE TABLE `military_course` (
   `CourseId` int(11) NOT NULL,
   `CourseName` varchar(45) NOT NULL,
   `Enable` tinyint(1) NOT NULL DEFAULT 1
@@ -37,7 +37,7 @@ CREATE TABLE `course` (
 -- 傾印資料表的資料 `course`
 --
 
-INSERT INTO `course` (`CourseId`, `CourseName`, `Enable`) VALUES
+INSERT INTO `military_course` (`CourseId`, `CourseName`, `Enable`) VALUES
 (1, '軍訓', 1),
 (2, '三軍概要', 1),
 (3, '孫子兵法', 1),
@@ -51,10 +51,10 @@ INSERT INTO `course` (`CourseId`, `CourseName`, `Enable`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `records`
+-- 資料表結構 `military_records`
 --
 
-CREATE TABLE `records` (
+CREATE TABLE `military_records` (
   `RecordId` int(11) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Grade` varchar(20) NOT NULL,
@@ -69,10 +69,10 @@ CREATE TABLE `records` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `records_course`
+-- 資料表結構 `military_records_course`
 --
 
-CREATE TABLE `records_course` (
+CREATE TABLE `military_records_course` (
   `TableId` int(11) NOT NULL,
   `RecordId` int(11) NOT NULL,
   `CourseId` int(11) NOT NULL
@@ -81,10 +81,10 @@ CREATE TABLE `records_course` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `records_images`
+-- 資料表結構 `military_records_images`
 --
 
-CREATE TABLE `records_images` (
+CREATE TABLE `military_records_images` (
   `TableId` int(11) NOT NULL,
   `RecordId` int(11) NOT NULL,
   `ImagePath` varchar(100) DEFAULT NULL
@@ -97,19 +97,19 @@ CREATE TABLE `records_images` (
 --
 -- 資料表索引 `course`
 --
-ALTER TABLE `course`
+ALTER TABLE `military_course`
   ADD PRIMARY KEY (`CourseId`);
 
 --
 -- 資料表索引 `records`
 --
-ALTER TABLE `records`
+ALTER TABLE `military_records`
   ADD PRIMARY KEY (`RecordId`);
 
 --
 -- 資料表索引 `records_course`
 --
-ALTER TABLE `records_course`
+ALTER TABLE `military_records_course`
   ADD PRIMARY KEY (`TableId`),
   ADD KEY `record exist` (`RecordId`),
   ADD KEY `course exist` (`CourseId`);
@@ -117,7 +117,7 @@ ALTER TABLE `records_course`
 --
 -- 資料表索引 `records_images`
 --
-ALTER TABLE `records_images`
+ALTER TABLE `military_records_images`
   ADD PRIMARY KEY (`TableId`),
   ADD KEY `records_images` (`RecordId`);
 
@@ -128,25 +128,25 @@ ALTER TABLE `records_images`
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `course`
 --
-ALTER TABLE `course`
+ALTER TABLE `military_course`
   MODIFY `CourseId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `records`
 --
-ALTER TABLE `records`
+ALTER TABLE `military_records`
   MODIFY `RecordId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `records_course`
 --
-ALTER TABLE `records_course`
+ALTER TABLE `military_records_course`
   MODIFY `TableId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `records_images`
 --
-ALTER TABLE `records_images`
+ALTER TABLE `military_records_images`
   MODIFY `TableId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -156,15 +156,15 @@ ALTER TABLE `records_images`
 --
 -- 資料表的限制式 `records_course`
 --
-ALTER TABLE `records_course`
-  ADD CONSTRAINT `course exist` FOREIGN KEY (`CourseId`) REFERENCES `course` (`CourseId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `record exist` FOREIGN KEY (`RecordId`) REFERENCES `records` (`RecordId`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `military_records_course`
+  ADD CONSTRAINT `course exist` FOREIGN KEY (`CourseId`) REFERENCES `military_course` (`CourseId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `record exist` FOREIGN KEY (`RecordId`) REFERENCES `military_records` (`RecordId`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- 資料表的限制式 `records_images`
 --
-ALTER TABLE `records_images`
-  ADD CONSTRAINT `records_images` FOREIGN KEY (`RecordId`) REFERENCES `records` (`RecordId`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `military_records_images`
+  ADD CONSTRAINT `records_images` FOREIGN KEY (`RecordId`) REFERENCES `military_records` (`RecordId`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
