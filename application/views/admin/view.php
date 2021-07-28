@@ -51,8 +51,8 @@
     </table>
     <h3>上傳資料</h3>
         <?php foreach($record_item_images as $images):?>
-            <a href="/uploads/<?php echo $images['ImagePath'];?>">
-            <img src="/uploads/<?php echo $images['ImagePath'];?>" class="img-fluid img-thumbnail" href=""></img>
+            <a href="<?php echo base_url()?>/uploads/<?php echo $images['ImagePath'];?>">
+            <img src="<?php echo base_url()?>/uploads/<?php echo $images['ImagePath'];?>" class="img-fluid img-thumbnail" href=""></img>
             </a>
         <?php endforeach?>
 </div>
