@@ -8,10 +8,10 @@ class RecordImage_model extends CI_Model {
         {
             if ($id === FALSE)
             {
-                    $query = $this->db->get('records_images');
+                    $query = $this->db->get('military_records_images');
                     return $query->result_array();
             }
-            $query = $this->db->get_where('records_images', array('RecordId' => $id));
+            $query = $this->db->get_where('military_records_images', array('RecordId' => $id));
             return $query->result_array();
         }
         
@@ -31,7 +31,7 @@ class RecordImage_model extends CI_Model {
                         'RecordId' => $recordId,
                         'ImagePath' => $item  
                     );
-                    $this->db->insert('records_images',$insert);
+                    $this->db->insert('military_records_images',$insert);
                 }               
                 return $this->db->insert_id(); 
         }

@@ -9,7 +9,7 @@ class Course_model extends CI_Model {
         {
             if ($id === FALSE)
             {
-                    $query = $this->db->get('course');
+                    $query = $this->db->get('military_course');
                     return $query->result_array();
             }
 
@@ -18,14 +18,14 @@ class Course_model extends CI_Model {
         }
         public function get_enabled()
         {
-            $query = $this->db->get_where('course', array('Enable' => 1));
+            $query = $this->db->get_where('military_course', array('Enable' => 1));
             return $query->result_array();
         }
         public function changestatus($id){
-                $sql1 = sprintf('SELECT `Enable` FROM `course` where CourseId=%d;',$id);
+                $sql1 = sprintf('SELECT `Enable` FROM `miitary_course` where CourseId=%d;',$id);
                 $query1 = $this->db->query($sql1)->row_array();
                 $int = ($query1['Enable']==1 ? 0 : 1);
-                $sql2 = sprintf('UPDATE `course` SET `Enable` = %d WHERE `course`.`CourseId` = %d',$int,$id);
+                $sql2 = sprintf('UPDATE `military_course` SET `Enable` = %d WHERE `military_course`.`CourseId` = %d',$int,$id);
                 $query2 = $this->db->query($sql2);
                 return $query2;
         }
@@ -33,7 +33,7 @@ class Course_model extends CI_Model {
                 $data = array(
                         'CourseName' => $name
                 );
-                $this->db->insert('course', $data);
+                $this->db->insert('military_course', $data);
                 return $this->db->affected_rows();
         }
         public function delete($id){
