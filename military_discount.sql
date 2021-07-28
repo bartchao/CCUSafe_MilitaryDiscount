@@ -51,7 +51,7 @@ INSERT INTO `military_course` (`CourseId`, `CourseName`, `Enable`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `records`
+-- 資料表結構 `military_records`
 --
 
 CREATE TABLE `military_records` (
@@ -69,7 +69,7 @@ CREATE TABLE `military_records` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `records_course`
+-- 資料表結構 `military_records_course`
 --
 
 CREATE TABLE `military_records_course` (
@@ -81,7 +81,7 @@ CREATE TABLE `military_records_course` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `records_images`
+-- 資料表結構 `military_records_images`
 --
 
 CREATE TABLE `military_records_images` (
