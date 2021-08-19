@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
    <title>學安組 折抵兵役</title>
    <!-- Favicon-->
-   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+   <link rel="icon" type="image/x-icon" href="<?php echo base_url(); ?>static/assets/favicon.ico" />
    <!-- Core theme CSS (includes Bootstrap)-->
    <link href="<?php echo base_url(); ?>static/css/styles.css" rel="stylesheet" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -254,6 +254,7 @@ table.table .avatar {
                class="navbar-toggler-icon"></span></button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+			    <li class="nav-item">Version:1.2.0(2021-08-14)</li>          
             </ul>
          </div>
       </div>

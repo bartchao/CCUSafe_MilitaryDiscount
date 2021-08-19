@@ -4,7 +4,7 @@
       <?php echo validation_errors('<div class="alert alert-warning" role="alert">','</div>'); ?>
          <div class="mb-3">
             <label class="form-label">申請日期</label>
-            <input type="date" id="applydate" class="form-control flatpickr" name="applydate" placeholder="" value="<?php echo set_value('applydate'); ?>">
+            <input type="date" id="applydate" class="form-control flatpickr" name="applydate" placeholder="" value="<?php echo set_value('applydate'); ?>" required>
          </div>
          <!-- Input -->
          <div class="mb-3">

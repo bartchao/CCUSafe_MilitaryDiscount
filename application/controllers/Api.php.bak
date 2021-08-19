@@ -1,0 +1,71 @@
+/*Prebuild for Ver.2 (API use)
+*/
+<?php
+use chriskacerguis\RestServer\RestController;
+class Api extends RestController
+{
+    public function __construct()
+    {
+        // Construct the parent class
+        parent::__construct();
+        $this->load->model('record_model');
+        $this->load->model('course_model');
+        $this->load->model('recordimage_model');
+        $this->load->model('recordcourse_model');
+    }
+    public function records_get($id = 0)
+    {
+        if($id == 0){
+            $data['record'] = $this->record_model->get();
+            if($data['record']!=null){
+            $this->response( $data['record'], 200 );
+            }else{
+                $this->response( [
+                    'status' => false,
+                    'message' => 'No Records were found'
+                ], 404 );
+            }
+        }
+        
+        
+    }
+    public function recordcourse_get($id = 0){
+        $check = $this->recordcourse_model->get_selected($id);
+        if($check!=null){
+            $this->response( $check, 200 );
+        }else{
+            $this->response( 'No Data Found', 404 );
+        }
+    }
+    public function recordimage_get($id = 0){
+        $check = $this->recordimage_model->get($id);    
+        if($check!=null){
+            $this->response( $check, 200 );
+        }else{
+            $this->response( 'No Data Found', 404 );
+        }
+    }
+    public function records_delete($id = false)
+    {
+        if($id!=false){
+            $this->recordimage_model->delete($id);
+            $this->record_model->delete($id);      
+            $this->response(['Item deleted successfully.'], 200);
+        }
+
+    }
+    public function export_get($id = false){
+        $this->load->library('pdf');
+        $data['record_item'] = $this->record_model->get($id);
+        if($data['record_item']!=null){
+            $data['record_item_course'] = $this->recordcourse_model->get_selected($id);
+            $data['record_item_images'] = $this->recordimage_model->get($id);
+            $html = $this->load->view('CreatePdfView', $data, true);
+            $this->pdf->createPDF($html, 'mypdf', true);
+        }else{
+            //Error!
+        }
+        
+        
+    }
+}

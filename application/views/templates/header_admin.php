@@ -6,7 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
    <title>(管理員)學安組 折抵兵役</title>
    <!-- Favicon-->
-   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+   <link rel="icon" type="image/x-icon" href="<?php echo base_url(); ?>static/assets/favicon.ico" />
+
    <!-- Core theme CSS (includes Bootstrap)-->
    <link href="<?php echo base_url(); ?>static/css/styles.css" rel="stylesheet" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -254,9 +255,9 @@ table.table .avatar {
                class="navbar-toggler-icon"></span></button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-               <li class="nav-item"><a class="nav-link" href="index">申請資料</a></li>
-               <li class="nav-item"><a class="nav-link" href="course">課程管理</a></li>
-			   <li class="nav-item"><a class="nav-link" href="logout">登出</a></li>
+               <li class="nav-item"><a class="nav-link" href="<?php echo base_url();?>index.php/admin/index">申請資料</a></li>
+               <li class="nav-item"><a class="nav-link" href="<?php echo base_url();?>index.php/admin/course">課程管理</a></li>
+			   <li class="nav-item"><a class="nav-link" href="<?php echo base_url();?>index.php/admin/logout">登出</a></li>
             </ul>
          </div>
       </div>

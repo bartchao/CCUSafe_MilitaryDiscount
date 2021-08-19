@@ -18,8 +18,15 @@ class Recordimage_model extends CI_Model {
         public function update($array){
 
         }
-        public function delete($id){
-            
+        public function delete($data){
+			foreach($data as $id){
+				$query = $this->db->get_where('military_records_images', array('RecordId' => $id));
+                $img = $query->result_array();
+                foreach($img as $item){
+                        unlink("./uploads/".$item['ImagePath']);
+                }
+            } 
+                
         }
         public function insert($data)
         {

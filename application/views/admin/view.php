@@ -1,17 +1,19 @@
 <div class="container px-1 gy-5">
-    <div>
-        <button onClick="window.print()" class="btn btn-primary">列印/儲存</button>
-        <?php echo form_open('admin/delete')?>
+<div>
+	<div class="flaot-left">
+	<p>資料建立時間:<?php echo $record_item['CreateTime'];?></p>
+	</div>
+    <div class="float-right">
+	<?php echo form_open('admin/delete')?>
+        <a href="export/<?php echo $record_item['RecordId'];?>" class="btn btn-primary">儲存PDF</a>
+        
         <input type="hidden" name="options[]" value="<?php echo $record_item['RecordId'];?>">
         <button type="submit" class ="btn btn-danger">刪除</button>
         <?php echo form_close()?>
-        <p>頁面生成時間:<?php 
-            date_default_timezone_set('Asia/Taipei');
-            $date = date('m/d/Y h:i:s a', time());
-            echo $date;?></p>
+	</div>
+</div>
+	<hr>
 
-    </div>
-    <hr>
     <h3>個人資料</h3>
     <table class="table table-striped table-responsive">
         <thead>

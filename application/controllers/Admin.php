@@ -26,6 +26,7 @@ class Admin extends CI_Controller {
                 }else{
                     $this->load->view('templates/header_admin_login');
                     $this->load->view('admin/login');
+                    $this->load->view('admin/updatelog');
                     $this->load->view('templates/footer');
                 }
             }
@@ -108,9 +109,12 @@ class Admin extends CI_Controller {
             if ($this->session->userdata('admin')===true) {
                 $data =  $this->input->post('options');
                 if ($data!==null) {
+					//$this->recordimage_model->delete($data);
                     $rows = $this->record_model->delete($data);
                     redirect('admin/index');
-                }
+                }else{
+					show_error('無資料被刪除');
+				}
             }else{
                 redirect('admin');
             }
@@ -118,5 +122,22 @@ class Admin extends CI_Controller {
         public function logout(){
             $this->session->unset_userdata('admin');
             redirect('admin');
+        }
+		public function export($id = false){
+            if($id!=false){
+                $this->load->library('pdf');
+                $data['record_item'] = $this->record_model->get($id);
+                if($data['record_item']!=null){
+                    $data['record_item_course'] = $this->recordcourse_model->get_selected($id);
+                    $data['record_item_images'] = $this->recordimage_model->get($id);
+                    $html = $this->load->view('CreatePdfView', $data, true);
+					$name = $data['record_item']['StudentId'];
+                    $this->pdf->createPDF($html, $name, true);
+				}else{
+                //Error!
+					show_error('找不到此資料');
+
+				}
+			}
         }
 }

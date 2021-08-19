@@ -15,7 +15,7 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th>ID</th>
+						<th>建立時間</th>
 						<th>申請日期</th>
 						<th>姓名</th>
 						<th>系級</th>
@@ -33,7 +33,7 @@
 								<label></label>
 							</span>
 						</td>
-						<td><?php echo $item['RecordId'];?></td>
+						<td><?php echo $item['CreateTime'];?></td>
 						<td><?php echo $item['ApplyDate'];?></td>
 						<td><?php echo $item['Name'];?></td>
 						<td><?php echo $item['Grade'];?></td>

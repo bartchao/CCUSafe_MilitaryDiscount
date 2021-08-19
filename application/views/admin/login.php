@@ -37,8 +37,5 @@ body {
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="登入">
                             </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					</div>
+                

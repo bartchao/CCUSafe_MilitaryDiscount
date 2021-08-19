@@ -3,7 +3,6 @@
 
 <!-- Core theme JS-->
 <script src="<?php echo base_url(); ?>static/js/scripts.js"></script>
-
 </body>
 
 </html>

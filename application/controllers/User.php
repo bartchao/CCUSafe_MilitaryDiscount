@@ -19,17 +19,8 @@ class User extends CI_Controller
     {
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
-
+        //Form Validation Config goes here
         $config = array(
-            array(
-                'field' => 'studentid',
-                'label' => '學號',
-                'rules' => 'exact_length[9]|integer',
-                'errors' => array(
-                    'exact_length[9]' => '%s須為9位數字',
-                    'integer' => '%s須為9位數字',
-                )
-            ),
             array(
                 'field' => 'email',
                 'label' => 'Email',
@@ -48,6 +39,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules($config);
         if ($this->form_validation->run() == FALSE)
         {
+            //Check User State
             if($this->session->userdata('Record')===null){
                 $data['course'] = $this->course_model->get_enabled();
                 $this->load->view('templates/header');
@@ -81,6 +73,7 @@ class User extends CI_Controller
         $data = array();
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        //Max Upload size 15MB
         $config['max_size']             = 15000;
         $config['max_width']            = 0;
         $config['max_height']           = 0;
@@ -112,7 +105,10 @@ class User extends CI_Controller
                             $filename[$i] = $fileData['file_name'];
                             //$uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
                         } else {
-                            show_error("上傳檔案發生錯誤，請回上一頁重試。");
+                            $msg = $this->upload->display_errors();
+                            log_message('error',$msg);
+                            show_error('上傳檔案發生錯誤，請回上一頁重試。'.$msg);
+                            break;
                         }  
                     }
                     $this->session->set_userdata('File',$filename);
