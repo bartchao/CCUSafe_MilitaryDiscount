@@ -1,5 +1,5 @@
 <?php
-class RecordCourse_model extends CI_Model {
+class Recordcourse_model extends CI_Model {
 
         public function __construct()
         {
@@ -9,15 +9,15 @@ class RecordCourse_model extends CI_Model {
         {
             if ($id === FALSE)
             {
-                    $query = $this->db->get('records_course');
+                    $query = $this->db->get('military_records_course');
                     return $query->result_array();
             }
-            $query = $this->db->get_where('records_course', array('id' => $id));
+            $query = $this->db->get_where('military_records_course', array('id' => $id));
             return $query->row_array();
         }
         public function get_selected($id)
         {
-			$sql = sprintf('SELECT a.CourseId,a.CourseName FROM `course` as a NATURAL JOIN `records_course` as b where b.RecordId = %d',$id);
+			$sql = sprintf('SELECT a.CourseId,a.CourseName FROM `military_course` as a NATURAL JOIN `military_records_course` as b where b.RecordId = %d',$id);
 			$query = $this->db->query($sql);
             return $query->result_array();
         }
@@ -37,7 +37,7 @@ class RecordCourse_model extends CI_Model {
                         'RecordId' => $recordId,
                         'CourseId' => $item  
                     );
-                    $this->db->insert('records_course',$insert);
+                    $this->db->insert('military_records_course',$insert);
                 }               
                 return $this->db->insert_id(); 
         }
